@@ -28,6 +28,35 @@
 
 function pairProject(students) {
     // your code here 
+
+    if(students.length % 2 !== 0) return 'jumlah murid harus genap'
+    
+    let i = 0
+    let pairs = []
+    while (i < students.length) {
+      let murid1 = students[i]
+      let inis1 = murid1[0]
+      let tempHasil = ''
+      let j = 0
+      while(j < students.length && tempHasil.length < 1) {
+        let murid2 = students[j]
+        let inis2 = murid2[0]
+
+        if(inis1 !== inis2 && inis1 !== undefined && inis2 !== undefined) {
+          let hasil = `${murid1} dan ${murid2}`
+          tempHasil = hasil
+          students[i] = ''
+          students[j] = ''
+          // i = 0
+        }
+        j++
+      }
+
+      if(tempHasil) pairs.push(tempHasil)
+      
+      i++
+    }
+    return pairs
 }
 
 console.log(pairProject(["Acong", "Afifah", "Charlie", "Samuel", "Daniel", "Wika", "Wiwin", "Mimin", "Rindu", "Semmi"]))
