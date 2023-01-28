@@ -53,6 +53,17 @@ YOUR PSEUDOCODE BELOW:
 
 function buatCatatan (meds, rules) {
     // your code here
+
+    if(!meds || !rules || meds.length !== rules.length) return "Budi harus bertanya lagi pada dokter."
+
+    let outputs = []
+    for(let i = 0; i < meds.length; i++) {
+        if(rules[i] !== 0) {
+            let temp = `${meds[i]} diminum ${rules[i]}x`
+            outputs.push(temp)
+        }
+    }
+    return outputs
     
 }
 
