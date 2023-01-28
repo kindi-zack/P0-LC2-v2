@@ -53,6 +53,39 @@ NOTES :
 
 function groupHeroes(heroes){
     // write your code here ...
+
+    if(!heroes) return 'Error input, data not found!'
+    if(heroes.length <= 0) return 'There is no heroes on list, please check again!'
+
+    let output = {}
+
+    for(let i = 0; i < heroes.length; i++) {
+        let key = heroes[i][1]
+        output[key] = {
+            list: [],
+            bestPower: {
+                name: '',
+                power: 0
+            }
+        }
+    }
+
+    for(let key in output) {
+        for(let item of heroes) {
+            let hero = item[0]
+            let key2 = item[1]
+            let power = item[2]
+            if(key === key2) {
+                output[key].list.push(hero)
+
+                if(output[key].bestPower.power < power) {
+                    output[key].bestPower.name = hero
+                    output[key].bestPower.power = power
+                } 
+            }
+        }
+    }
+    return output
 }
 
 
