@@ -60,6 +60,32 @@ function checkStatus(data) {
   // Jangan lupa berdoa
   // Tulis codenya dibawah ini
   
+  let { nama, skills, jumlahTahunKerja } = data
+  let suitedSkills = []
+  let nilai = 0
+  let status;
+
+  for(let i = 0; i < skills.length; i++) {
+    
+    for(let s of programmingSkills) {
+      if(skills[i] === s) {
+        suitedSkills.push(s)
+        nilai += 50
+      }
+    }
+  }
+
+  if (suitedSkills.length === 0) return `${nama} ditolak karena tidak sesuai kriteria`
+
+  if(jumlahTahunKerja < 2) {
+    status = 'junior'
+  }else if(jumlahTahunKerja < 5) {
+    status = 'middle'
+  }else {
+    status = 'senior'
+  }
+
+  return `${nama} diterima sebagai ${status} programmer dengan total nilai ${nilai}`
 }
 
 let person1 = {
